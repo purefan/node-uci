@@ -2,19 +2,13 @@
   "name": "node-uci",
   "version": "1.3.1",
   "description": "Universal Chess Interface protocol implementation for node.js",
-  "main": "lib/index.js",
-  "jsnext:main": "src/index.js",
-  "scripts": {
-    "lint": "eslint .",
-    "test": "jest",
-    "test:watch": "yarn test --watch",
-    "test:coverage": "yarn test --coverage",
-    "pretest:ci": "yarn lint",
-    "test:ci": "yarn test:coverage && cat coverage/lcov.info | codeclimate-test-reporter",
-    "build": "rimraf lib && cross-env NODE_ENV=production rollup -c",
-    "docs": "rimraf docs && documentation build src/index.js -f html -o docs -g",
-    "docs:watch": "documentation serve src/index.js -f html -g --watch src"
-  },
+  "author": "ebemunk",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ebemunk/node-uci"
@@ -25,37 +19,35 @@
     "chess",
     "engine"
   ],
-  "author": "ebemunk",
-  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage",
+    "pretest:ci": "yarn lint",
+    "test:ci": "yarn test:coverage && cat coverage/lcov.info | codeclimate-test-reporter",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
+    "docs": "rimraf docs && documentation build src/index.js -f html -o docs -g",
+    "docs:watch": "documentation serve src/index.js -f html -g --watch src"
+  },
   "dependencies": {
-    "babel-runtime": "6.26.0",
-    "bluebird": "3.5.1",
+    "bluebird": "^3.5.3",
     "debug": "3.1.0",
-    "lodash": "4.17.10"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-eslint": "9.0.0",
-    "babel-jest": "23.4.2",
-    "babel-plugin-external-helpers": "6.22.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-polyfill": "6.26.0",
-    "babel-preset-es2015": "6.24.1",
-    "babel-preset-stage-0": "6.24.1",
-    "babel-register": "6.26.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/preset-env": "^7.3.4",
     "codeclimate-test-reporter": "0.5.0",
-    "cross-env": "5.2.0",
+    "cross-env": "^5.2.0",
     "documentation": "8.1.2",
-    "eslint": "5.4.0",
-    "eslint-config-prettier": "^3.0.1",
-    "jest": "23.5.0",
-    "prettier": "1.14.2",
-    "rimraf": "2.6.2",
-    "rollup": "0.65.0",
-    "rollup-plugin-babel": "3",
-    "rollup-plugin-commonjs": "9.1.6",
-    "rollup-plugin-node-resolve": "3.3.0",
-    "rollup-plugin-terser": "^2.0.2"
+    "rimraf": "^2.6.3",
+    "rollup": "^1.6.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-node-resolve": "^4.0.1"
   }
 }
